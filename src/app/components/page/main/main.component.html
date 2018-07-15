@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>サンプル入力フォーム</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<!-- ボタン -->
+<button mat-raised-button (click)="onButtonClick()">Basic</button>
+<button mat-raised-button color="primary" (click)="onButtonClick()"
+      matBadge="8" matBadgePosition="after" matBadgeColor="accent">Primary</button>
+<button mat-raised-button color="accent" (click)="onButtonClick()">Accent</button>
+<button mat-raised-button color="warn">Warn</button>
+<button mat-raised-button disabled (click)="onButtonClick()">Disabled</button>
+<a mat-raised-button routerLink=".">Link</a>
+
+<button mat-mini-fab>
+<mat-icon>add</mat-icon>
+</button>
+
+<br>
+<!-- アイコン -->
+<i class="material-icons md-24">done</i>
+<mat-icon>favorite</mat-icon>
+<br>
+日付１：{{ loadDate | date:"yyyy年MM月dd日 HH:mm:ss" }}
+<br>
+日付２：{{ baseDate.toDate() | date:"yyyy年MM月dd日 HH:mm:ss" }}
+<br>
+日付の差分：{{diffDates}}日

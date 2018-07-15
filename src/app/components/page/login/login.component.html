@@ -1,0 +1,38 @@
+<div class="LoginFormComponent">
+  <mat-card class="LoginFormComponent-card">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title>ログイン</mat-card-title>
+      </mat-card-header>
+      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+      <p *ngIf="resultmessage.length > 0">{{resultmessage}}</p>
+      <mat-card-content class="LoginFormComponent-card-content">
+        <!-- リアクティブフォーム loginFormと関連付け -->
+        <form [formGroup]="loginForm" >
+          <mat-form-field class="LoginFormComponent-card-content-input">
+            <mat-label>ログインID</mat-label>
+            <input matInput formControlName="loginId" placeholder="[例]uematsu" required>
+            <mat-error *ngIf="loginId.hasError('required')">ログインIDは必須です</mat-error>
+            <mat-error *ngIf="loginId.hasError('minlength')">文字数が足りません</mat-error>
+            <mat-error *ngIf="loginId.hasError('maxlength')">文字数が多すぎます</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="LoginFormComponent-card-content-input">
+            <input matInput formControlName="loginPassword" placeholder="パスワード" [type]="isHidePass ? 'password' : 'text'" required>
+            <mat-icon matSuffix (click)="isHidePass = !isHidePass">{{isHidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-error *ngIf="loginPassword.hasError('required')">パスワードは必須です</mat-error>
+            <mat-error *ngIf="loginPassword.hasError('forbiddenName')">その文字はやめてください</mat-error>
+          </mat-form-field>
+          <br>             
+          <!-- サブミット -->
+          <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid"
+            matTooltip="登録しちゃいますよ！！"
+            matTooltipPosition="right"
+            class="LoginFormComponent-card-content-input" (click)="submitLogin($event)">ログイン</button>
+          <!-- チェックボックス -->
+        <mat-checkbox formControlName="isSaved">ログイン状態を保持する</mat-checkbox>
+        <br>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

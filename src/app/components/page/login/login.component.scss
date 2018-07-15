@@ -1,0 +1,23 @@
+@import 'common';
+
+.LoginFormComponent{
+  width: 100vw;
+  height: 100vh;
+  background: $common-background-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+        
+  .LoginFormComponent-card{
+      width: 300px;
+      .LoginFormComponent-card-content{
+          form{
+              .LoginFormComponent-card-content-input{
+                  width: 100%;
+                  margin-bottom: 10px;
+              }
+          }
+      }
+  }
+}
